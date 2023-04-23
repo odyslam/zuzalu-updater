@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import { deserializeSemaphoreGroup } from '@pcd/semaphore-group-pcd'
+import { deserializeSemaphoreGroup, SerializedSemaphoreGroup } from '@pcd/semaphore-group-pcd'
 /**
  * Welcome to Cloudflare Workers! This is your first scheduled worker.
  *
@@ -365,9 +365,9 @@ const abi = [
 //     }
 
 const getGroup = async (group: number) => {
-  const res = await fetch("https://api.pcd-passport.com/semaphore/groups/" + number.toString());
-  const json = await res.json()
-  const deser = deserializeGroup(json);
+  const res = await fetch("https://api.pcd-passport.com/semaphore/groups/" + group.toString())
+  const json: SerializedSemaphoreGroup = await res.json()
+  const deser = deserializeSemaphoreGroup(json)
   return deser;
 }
 
@@ -390,20 +390,20 @@ export default {
     let depths = [0n, 0n, 0n, 0n]
 
     if (participantsGroup.root != contractRoots[0]) {
-      roots[0] = participantsGroup.root;
-      depths[0] = participantsGroup.depth;
+      roots[0] = BigInt(participantsGroup.root);
+      depths[0] = BigInt(participantsGroup.depth);
     }
     if (residentsGroup.root != contractRoots[1]) {
-      roots[1] = residentsGroup.root;
-      depths[1] = residentsGroup.depth;
+      roots[1] = BigInt(residentsGroup.root);
+      depths[1] = BigInt(residentsGroup.depth);
     }
     if (visitorsGroup.root != contractRoots[2]) {
-      roots[2] = visitorsGroup.root;
-      depths[2] = visitorsGroup.depth;
+      roots[2] = BigInt(visitorsGroup.root);
+      depths[2] = BigInt(visitorsGroup.depth);
     }
     if (organizersGroup.root != contractRoots[3]) {
-      roots[3] = organizersGroup.root;
-      depths[3] = organizersGroup.depth;
+      roots[3] = BigInt(organizersGroup.root);
+      depths[3] = BigInt(organizersGroup.depth);
     }
     const tx = await contract.updateGroups(roots, depths);
     const receipt = await tx.wait();
