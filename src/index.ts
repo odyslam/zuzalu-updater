@@ -386,22 +386,22 @@ export default {
     const visitorsGroup = await getGroup(3);
     const organizersGroup = await getGroup(4);
 
-    let roots = [ethers.BigNumber.from(0), ethers.BigNumber.from(0), ethers.BigNumber.from(0), ethers.BigNumber.from(0)];
-    let depths = [ethers.BigNumber.from(0), ethers.BigNumber.from(0), ethers.BigNumber.from(0), ethers.BigNumber.from(0)];
+    let roots = [0n, 0n, 0n, 0n]
+    let depths = [0n, 0n, 0n, 0n]
 
-    if (!participantsGroup.root.eq(contractRoots[0])) {
+    if (participantsGroup.root != contractRoots[0]) {
       roots[0] = participantsGroup.root;
       depths[0] = participantsGroup.depth;
     }
-    if (!residentsGroup.root.eq(contractRoots[1])) {
+    if (residentsGroup.root != contractRoots[1]) {
       roots[1] = residentsGroup.root;
       depths[1] = residentsGroup.depth;
     }
-    if (!visitorsGroup.root.eq(contractRoots[2])) {
+    if (visitorsGroup.root != contractRoots[2]) {
       roots[2] = visitorsGroup.root;
       depths[2] = visitorsGroup.depth;
     }
-    if (!organizersGroup.root.eq(contractRoots[3])) {
+    if (organizersGroup.root != contractRoots[3]) {
       roots[3] = organizersGroup.root;
       depths[3] = organizersGroup.depth;
     }
