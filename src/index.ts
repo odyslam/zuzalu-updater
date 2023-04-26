@@ -1,5 +1,4 @@
 import { ethers } from 'ethers';
-import { deserializeSemaphoreGroup, SerializedSemaphoreGroup } from '@pcd/semaphore-group-pcd'
 /**
  * Welcome to Cloudflare Workers! This is your first scheduled worker.
  *
@@ -364,11 +363,25 @@ const abi = [
 //         Organizers
 //     }
 
-const getGroup = async (group: number) => {
-  const res = await fetch("https://api.pcd-passport.com/semaphore/groups/" + group.toString())
-  const json: SerializedSemaphoreGroup = await res.json()
-  const deser = deserializeSemaphoreGroup(json)
-  return deser;
+interface Historic {
+  id: number;
+  name: string;
+  members: string[];
+  depth: number;
+}
+
+interface RootAndDepth {
+  root: number,
+  depth: number
+}
+
+const getRootAndDepth = async (group: number): Promise<RootAndDepth> => {
+  const rootRes = await fetch("https://api.pcd-passport.com/semaphore/latest-root/" + group.toString());
+  const root: number = await rootRes.json();
+  const historicRes = await fetch(`https://api.pcd-passport.com/semaphore/historic/${root}`);
+  const historic: Historic = await historicRes.json();
+  const depth = historic.depth;
+  return { root: root, depth: depth };
 }
 
 export default {
@@ -381,29 +394,29 @@ export default {
     const wallet = new ethers.Wallet(env.ETH_PRIVATE_KEY, provider);
     const contract = new ethers.Contract(env.CONTRACT_ADDRESS, abi, wallet);
     const contractRoots = await contract.getLastRoots();
-    const participantsGroup = await getGroup(1);
-    const residentsGroup = await getGroup(2);
-    const visitorsGroup = await getGroup(3);
-    const organizersGroup = await getGroup(4);
+    const participants = await getRootAndDepth(1);
+    const residents = await getRootAndDepth(2);
+    const visitors = await getRootAndDepth(3);
+    const organizers = await getRootAndDepth(4);
 
     let roots = [0n, 0n, 0n, 0n]
     let depths = [0n, 0n, 0n, 0n]
 
-    if (participantsGroup.root != contractRoots[0]) {
-      roots[0] = BigInt(participantsGroup.root);
-      depths[0] = BigInt(participantsGroup.depth);
+    if (participants.root != contractRoots[0]) {
+      roots[0] = BigInt(participants.root);
+      depths[0] = BigInt(participants.depth);
     }
-    if (residentsGroup.root != contractRoots[1]) {
-      roots[1] = BigInt(residentsGroup.root);
-      depths[1] = BigInt(residentsGroup.depth);
+    if (residents.root != contractRoots[1]) {
+      roots[1] = BigInt(residents.root);
+      depths[1] = BigInt(residents.depth);
     }
-    if (visitorsGroup.root != contractRoots[2]) {
-      roots[2] = BigInt(visitorsGroup.root);
-      depths[2] = BigInt(visitorsGroup.depth);
+    if (visitors.root != contractRoots[2]) {
+      roots[2] = BigInt(visitors.root);
+      depths[2] = BigInt(visitors.depth);
     }
-    if (organizersGroup.root != contractRoots[3]) {
-      roots[3] = BigInt(organizersGroup.root);
-      depths[3] = BigInt(organizersGroup.depth);
+    if (organizers.root != contractRoots[3]) {
+      roots[3] = BigInt(organizers.root);
+      depths[3] = BigInt(organizers.depth);
     }
     const tx = await contract.updateGroups(roots, depths);
     const receipt = await tx.wait();
