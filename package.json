@@ -11,6 +11,7 @@
     "deploy": "wrangler publish"
   },
   "dependencies": {
-    "ethers": "^6.3.0"
+    "ethers": "^6.3.0",
+    "zuzalu-oracle": "^1.0.0"
   }
 }

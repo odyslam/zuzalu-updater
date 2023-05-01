@@ -1,12 +1,11 @@
 name = "zuzalu-updater"
 main = "src/index.ts"
-node_compat = true
 compatibility_date = "2023-04-23"
 
 [triggers]
 # Every minute
-crons = [ "* * * * *" ]
+crons = ["0 */2 * * *"]
 
 
 [vars]
-CONTRACT_ADDRESS="0x275887D2D22d471663D58d69b9611792fFf1FEeD"
+CONTRACT_ADDRESS = "0x9E9e9995f83975770C454be031C1E68bF24dC0af"

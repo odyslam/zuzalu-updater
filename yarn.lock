@@ -4,32 +4,54 @@
 
 "@adraffy/ens-normalize@1.9.0":
   version "1.9.0"
-  resolved "https://registry.npmjs.org/@adraffy/ens-normalize/-/ens-normalize-1.9.0.tgz"
+  resolved "https://registry.yarnpkg.com/@adraffy/ens-normalize/-/ens-normalize-1.9.0.tgz#223572538f6bea336750039bb43a4016dcc8182d"
   integrity sha512-iowxq3U30sghZotgl4s/oJRci6WPBfNO5YYgk2cIOMCHr3LeGPcsZjCEr+33Q4N+oV3OABDAtA+pyvWjbvBifQ==
 
 "@cloudflare/workers-types@^4.20230404.0":
   version "4.20230404.0"
-  resolved "https://registry.npmjs.org/@cloudflare/workers-types/-/workers-types-4.20230404.0.tgz"
+  resolved "https://registry.yarnpkg.com/@cloudflare/workers-types/-/workers-types-4.20230404.0.tgz#414dd2d79765c291ec247e501ed7cff85dd4eae4"
   integrity sha512-fG3oaJX1icfsGV74nhx1+AC6opvZsGqnpx6FvrcVqQaBmCNkjKNqDRFrpasXWFiOIvysBXHKQAzsAJkBZgnM+A==
 
 "@noble/hashes@1.1.2":
   version "1.1.2"
-  resolved "https://registry.npmjs.org/@noble/hashes/-/hashes-1.1.2.tgz"
+  resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.1.2.tgz#e9e035b9b166ca0af657a7848eb2718f0f22f183"
   integrity sha512-KYRCASVTv6aeUi1tsF8/vpyR7zpfs3FUzy2Jqm+MU+LmUKhQ0y2FpfwqkCcxSg2ua4GALJd8k2R76WxwZGbQpA==
 
 "@noble/secp256k1@1.7.1":
   version "1.7.1"
-  resolved "https://registry.npmjs.org/@noble/secp256k1/-/secp256k1-1.7.1.tgz"
+  resolved "https://registry.yarnpkg.com/@noble/secp256k1/-/secp256k1-1.7.1.tgz#b251c70f824ce3ca7f8dc3df08d58f005cc0507c"
   integrity sha512-hOUk6AyBFmqVrv7k5WAw/LpszxVbj9gGN4JRkIX52fdFAj1UA61KXmZDvqVEm+pOyec3+fIeZB02LYa/pWOArw==
+
+"@openzeppelin/contracts@4.7.3":
+  version "4.7.3"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.7.3.tgz#939534757a81f8d69cc854c7692805684ff3111e"
+  integrity sha512-dGRS0agJzu8ybo44pCIf3xBaPQN/65AIXNgK8+4gzKd5kbvlqyxryUYVLJv7fK98Seyd2hDZzVEHSWAh0Bt1Yw==
+
+"@semaphore-protocol/contracts@^3.7.0":
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/@semaphore-protocol/contracts/-/contracts-3.9.0.tgz#e20181f8149e91f65dbf01cb4f758496f88995c3"
+  integrity sha512-OZ3HyzlyFc9fPcU3ccdDZKxKzVUpkEEsNOhx+iC57UurPS9u+MGFiGkVRZXyrVY/zQXwjc0G2ccwisgtR6PBuw==
+  dependencies:
+    "@openzeppelin/contracts" "4.7.3"
+    "@zk-kit/incremental-merkle-tree.sol" "1.3.3"
+
+"@zk-kit/incremental-merkle-tree.sol@1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@zk-kit/incremental-merkle-tree.sol/-/incremental-merkle-tree.sol-1.3.3.tgz#ec091912bd6862e978b7b693fcd35b5004d16017"
+  integrity sha512-Tm0MfrKii0JWgYJnyK0U4tlq69SWJemh16Tv3itvW4G2C7BLzgejnBbWomYPPrDHJBDgMDvIKETnb6/w5RLroQ==
 
 aes-js@4.0.0-beta.3:
   version "4.0.0-beta.3"
-  resolved "https://registry.npmjs.org/aes-js/-/aes-js-4.0.0-beta.3.tgz"
+  resolved "https://registry.yarnpkg.com/aes-js/-/aes-js-4.0.0-beta.3.tgz#da2253f0ff03a0b3a9e445c8cbdf78e7fda7d48c"
   integrity sha512-/xJX0/VTPcbc5xQE2VUP91y1xN8q/rDfhEzLm+vLc3hYvb5+qHCnpJRuFcrKn63zumK/sCwYYzhG8HP78JYSTA==
+
+"ds-test@https://github.com/dapphub/ds-test#cd98eff28324bfac652e63a239a60632a761790b":
+  version "1.0.0"
+  resolved "https://github.com/dapphub/ds-test#cd98eff28324bfac652e63a239a60632a761790b"
 
 ethers@^6.3.0:
   version "6.3.0"
-  resolved "https://registry.npmjs.org/ethers/-/ethers-6.3.0.tgz"
+  resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.3.0.tgz#c61efaafa2bd9a4d9f0c799d932ef3b5cd4bd37d"
   integrity sha512-CKFYvTne1YT4S1glTiu7TgGsj0t6c6GAD7evrIk8zbeUb6nK8dcUPAiAWM8uDX/1NmRTvLM9+1Vnn49hwKtEzw==
   dependencies:
     "@adraffy/ens-normalize" "1.9.0"
@@ -39,17 +61,37 @@ ethers@^6.3.0:
     tslib "2.4.0"
     ws "8.5.0"
 
+"forge-std@https://github.com/foundry-rs/forge-std#b971f66b8416e3b09f240f6ee7230ad3bdb13c19":
+  version "1.5.4"
+  resolved "https://github.com/foundry-rs/forge-std#b971f66b8416e3b09f240f6ee7230ad3bdb13c19"
+
+solmate@^6.7.0:
+  version "6.7.0"
+  resolved "https://registry.yarnpkg.com/solmate/-/solmate-6.7.0.tgz#5e07b62498babec273aceb322a3e45d0e058e042"
+  integrity sha512-iMPr+gKbKjXBB12a+Iz5Tua5r7T4yugHaGXDWSJbBZB4Gr3vLeUUvKeLyMxCWWqk1xlLhFDFFuAmOzeyVBuyvQ==
+
 tslib@2.4.0:
   version "2.4.0"
-  resolved "https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
   integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
 typescript@^5.0.4:
   version "5.0.4"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-5.0.4.tgz"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
   integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==
 
 ws@8.5.0:
   version "8.5.0"
-  resolved "https://registry.npmjs.org/ws/-/ws-8.5.0.tgz"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.5.0.tgz#bfb4be96600757fe5382de12c670dab984a1ed4f"
   integrity sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==
+
+zuzalu-oracle@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/zuzalu-oracle/-/zuzalu-oracle-1.0.0.tgz#576a69ff332a73843d563e536bcdfa97dfa585c7"
+  integrity sha512-A4B0pYSDxs4jwCN8LDo/xGMCv7psELVjj7/E8coWs5wLEhI9bQZmpKuTWBGP43rxzDi7PoNqlhXi9W6hq95ahw==
+  dependencies:
+    "@semaphore-protocol/contracts" "^3.7.0"
+    ds-test "https://github.com/dapphub/ds-test#cd98eff28324bfac652e63a239a60632a761790b"
+    ethers "^6.3.0"
+    forge-std "https://github.com/foundry-rs/forge-std#b971f66b8416e3b09f240f6ee7230ad3bdb13c19"
+    solmate "^6.7.0"
