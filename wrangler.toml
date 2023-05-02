@@ -3,10 +3,9 @@ main = "src/index.ts"
 compatibility_date = "2023-04-23"
 
 [triggers]
-crons = [ "* * * * *" ]
+# Every minute
+crons = ["0 */2 * * *"]
 
 
 [vars]
-ETH_RPC_URL="https://sepolia.infura.io/v3/1e89900b83544a4080855f166037bdc8"
-ETH_PRIVATE_KEY="0x40157eb9c737b36a605ddbf71319e352342d45d7f2d7a88974322a952341a103"
-CONTRACT_ADDRESS="0x565A6F4C649Cf9317b69FF424Ae714ff1677BA58"
+CONTRACT_ADDRESS = "0x9E9e9995f83975770C454be031C1E68bF24dC0af"
